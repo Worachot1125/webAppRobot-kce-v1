@@ -1,0 +1,82 @@
+{
+  "sendEnabled": true,
+  "pollingIntervalMs": 2000,
+  "statusRefreshIntervalMs": 5000,
+  "modelProcessCode": "moveShelf6",
+  "fromSystem": "TSC",
+  "rcs": [
+    {
+      "id": "rcs-1",
+      "name": "RCS-1",
+      "baseUrl": "http://192.168.1.200:7000",
+      "areaIds": [5, 6, 7]
+    }
+  ],
+  "robots": [
+    {
+      "id": "c040",
+      "name": "C040",
+      "deviceNum": "8154",
+      "rcsId": "rcs-1",
+      "imageUrl": "/assets/C040.jpg"
+    }
+  ],
+  "pickupFloors": [
+    {
+      "id": "f1",
+      "name": "Floor 1",
+      "spots": [
+        {
+          "id": "p-f1-test",
+          "name": "testf1",
+          "rcsPosition": "testf1"
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "name": "Floor 2",
+      "spots": [
+        {
+          "id": "p-f2-test",
+          "name": "testf2",
+          "rcsPosition": "testf2"
+        },
+        {
+          "id": "p-f2-test-2",
+          "name": "testf2-v2",
+          "rcsPosition": "testf2-v2"
+        }
+      ]
+    }
+  ],
+  "dropFloors": [
+    {
+      "id": "f1",
+      "name": "Floor 1",
+      "spots": [
+        {
+          "id": "p-f1-test",
+          "name": "testf1",
+          "rcsPosition": "testf1"
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "name": "Floor 2",
+      "spots": [
+        {
+          "id": "p-f2-test",
+          "name": "testf2",
+          "rcsPosition": "testf2"
+        },
+        {
+          "id": "p-f2-test-2",
+          "name": "testf2-v2",
+          "rcsPosition": "testf2-v2"
+        }
+      ]
+    }
+  ]
+}
