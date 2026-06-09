@@ -23,13 +23,6 @@
       "imageUrl": "/assets/C040.jpg"
     }
   ],
-  "carts": [
-    {
-      "id": "cart1",
-      "name": "Cart1",
-      "barcode_text": "0000000000"
-    }
-  ],
   "pickupLocactions": [
     {
       "location": [
@@ -52,51 +45,71 @@
         {
           "id": "bu1-01",
           "name": "Buffer1-01",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer1-01"
         },
         {
           "id": "bu1-02",
           "name": "Buffer1-02",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer1-02"
         },
         {
           "id": "bu1-03",
           "name": "Buffer1-03",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer1-03"
         },
         {
           "id": "bu1-04",
           "name": "Buffer1-04",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer1-04"
         },
         {
           "id": "bu1-05",
           "name": "Buffer1-05",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer1-05"
         },
         {
           "id": "bu2-01",
           "name": "Buffer2-01",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer2-01"
         },
         {
           "id": "bu2-02",
           "name": "Buffer2-02",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer2-02"
         },
         {
           "id": "bu2-03",
           "name": "Buffer2-03",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer2-03"
         },
         {
           "id": "bu2-04",
           "name": "Buffer2-04",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer2-04"
         },
         {
           "id": "bu2-05",
           "name": "Buffer2-05",
+          "statusCart": "empty",
+          "statusWork": "free",
           "rcsPosition": "Buffer2-05"
         }
       ]
@@ -111,85 +124,11 @@
       ]
     }
   ],
-  "dropFloors": [
+  "products": [
     {
-      "location": [
-        {
-          "id": "l1",
-          "name": "Location1",
-          "rcsPosition": "Location1",
-          "barcode_text": "1111111111"
-        },
-        {
-          "id": "l1",
-          "name": "Location1",
-          "rcsPosition": "Location1",
-          "barcode_text": "2222222222"
-        }
-      ]
-    },
-    {
-      "buffers": [
-        {
-          "id": "bu1-01",
-          "name": "Buffer1-01",
-          "rcsPosition": "Buffer1-01"
-        },
-        {
-          "id": "bu1-02",
-          "name": "Buffer1-02",
-          "rcsPosition": "Buffer1-02"
-        },
-        {
-          "id": "bu1-03",
-          "name": "Buffer1-03",
-          "rcsPosition": "Buffer1-03"
-        },
-        {
-          "id": "bu1-04",
-          "name": "Buffer1-04",
-          "rcsPosition": "Buffer1-04"
-        },
-        {
-          "id": "bu1-05",
-          "name": "Buffer1-05",
-          "rcsPosition": "Buffer1-05"
-        },
-        {
-          "id": "bu2-01",
-          "name": "Buffer2-01",
-          "rcsPosition": "Buffer2-01"
-        },
-        {
-          "id": "bu2-02",
-          "name": "Buffer2-02",
-          "rcsPosition": "Buffer2-02"
-        },
-        {
-          "id": "bu2-03",
-          "name": "Buffer2-03",
-          "rcsPosition": "Buffer2-03"
-        },
-        {
-          "id": "bu2-04",
-          "name": "Buffer2-04",
-          "rcsPosition": "Buffer2-04"
-        },
-        {
-          "id": "bu2-05",
-          "name": "Buffer2-05",
-          "rcsPosition": "Buffer2-05"
-        }
-      ]
-    },
-    {
-      "machines": [
-        {
-          "id": "mc-01",
-          "name": "Machine-01",
-          "rcsPosition": "Machine-01"
-        }
-      ]
+      "id": 1,
+      "barcode_text": "producttest1",
+      "createdAt": "2026-06-09T10:46:22.068Z"
     }
   ]
 }

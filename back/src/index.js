@@ -5,6 +5,8 @@ const authRoutes = require("./routes/auth");
 const configRoutes = require("./routes/config");
 const ordersRoutes = require("./routes/orders");
 const statusRoutes = require("./routes/status");
+const robotsRoutes = require("./routes/robots");
+const locationsRoutes = require("./routes/locations");
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -20,6 +22,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/config", configRoutes);
 app.use("/api/orders", ordersRoutes);
 app.use("/api/status", statusRoutes);
+app.use("/api/robots", robotsRoutes);
+app.use("/api/locations", locationsRoutes);
 
 const server = app.listen(port, () => {
   console.log(`Backend listening on port ${port}`);
