@@ -45,72 +45,27 @@
         {
           "id": "bu1-01",
           "name": "Buffer1-01",
-          "statusCart": "empty",
-          "statusWork": "free",
           "rcsPosition": "Buffer1-01"
         },
         {
           "id": "bu1-02",
           "name": "Buffer1-02",
-          "statusCart": "empty",
-          "statusWork": "free",
           "rcsPosition": "Buffer1-02"
         },
         {
           "id": "bu1-03",
           "name": "Buffer1-03",
-          "statusCart": "empty",
-          "statusWork": "free",
           "rcsPosition": "Buffer1-03"
         },
         {
           "id": "bu1-04",
           "name": "Buffer1-04",
-          "statusCart": "empty",
-          "statusWork": "free",
           "rcsPosition": "Buffer1-04"
         },
         {
           "id": "bu1-05",
           "name": "Buffer1-05",
-          "statusCart": "empty",
-          "statusWork": "free",
           "rcsPosition": "Buffer1-05"
-        },
-        {
-          "id": "bu2-01",
-          "name": "Buffer2-01",
-          "statusCart": "empty",
-          "statusWork": "free",
-          "rcsPosition": "Buffer2-01"
-        },
-        {
-          "id": "bu2-02",
-          "name": "Buffer2-02",
-          "statusCart": "empty",
-          "statusWork": "free",
-          "rcsPosition": "Buffer2-02"
-        },
-        {
-          "id": "bu2-03",
-          "name": "Buffer2-03",
-          "statusCart": "empty",
-          "statusWork": "free",
-          "rcsPosition": "Buffer2-03"
-        },
-        {
-          "id": "bu2-04",
-          "name": "Buffer2-04",
-          "statusCart": "empty",
-          "statusWork": "free",
-          "rcsPosition": "Buffer2-04"
-        },
-        {
-          "id": "bu2-05",
-          "name": "Buffer2-05",
-          "statusCart": "empty",
-          "statusWork": "free",
-          "rcsPosition": "Buffer2-05"
         }
       ]
     },

@@ -1,29 +1,53 @@
 const express = require("express");
-const { getConfig, getHistory, saveHistory, saveConfig } = require("../services/store");
-const { dispatchOrderImmediate, getQueueSnapshot } = require("../services/queue");
+const {
+  getConfig,
+  getHistory,
+  saveHistory,
+  saveConfig,
+} = require("../services/store");
+const {
+  dispatchOrderImmediate,
+  getQueueSnapshot,
+} = require("../services/queue");
 
 const router = express.Router();
 
-const BUFFER_IDS = [
-  "bu1-01",
-  "bu1-02",
-  "bu1-03",
-  "bu1-04",
-  "bu1-05",
-];
+const BUFFER_IDS = ["bu1-01", "bu1-02", "bu1-03", "bu1-04", "bu1-05"];
 
 function getPickupLocations(config) {
-  return (config.pickupLocactions || []).flatMap((group) => group.location || []);
+  return (config.pickupLocactions || []).flatMap(
+    (group) => group.location || [],
+  );
 }
 
 function getPickupBuffers(config) {
-  return (config.pickupLocactions || []).flatMap((group) => group.buffers || []);
+  return (config.pickupLocactions || []).flatMap(
+    (group) => group.buffers || [],
+  );
 }
 
+function getMachines(config) {
+  return (config.pickupLocactions || []).flatMap(
+    (group) => group.machines || [],
+  );
+}
+
+function findBufferById(config, bufferId) {
+  return getPickupBuffers(config).find(
+    (buffer) => String(buffer.id) === String(bufferId),
+  );
+}
+
+function findMachineById(config, machineId) {
+  return getMachines(config).find(
+    (machine) => String(machine.id) === String(machineId),
+  );
+}
 
 function findPickupLocationByBarcode(config, barcode) {
   return getPickupLocations(config).find(
-    (loc) => String(loc.barcode_text || "").trim() === String(barcode || "").trim()
+    (loc) =>
+      String(loc.barcode_text || "").trim() === String(barcode || "").trim(),
   );
 }
 
@@ -81,7 +105,7 @@ function updateBufferStatus(config, bufferId, values) {
 router.post("/scan-barcode", async (req, res) => {
   try {
     const barcodeText = String(
-      req.body?.barcode_text || req.body?.barcode || ""
+      req.body?.barcode_text || req.body?.barcode || "",
     ).trim();
 
     if (!barcodeText) {
@@ -97,7 +121,7 @@ router.post("/scan-barcode", async (req, res) => {
     }
 
     const exists = config.products.find(
-      (item) => String(item.barcode_text || "").trim() === barcodeText
+      (item) => String(item.barcode_text || "").trim() === barcodeText,
     );
 
     if (exists) {
@@ -160,89 +184,63 @@ router.post("/scan-pickup-location", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { productBarcode, pickupLocationBarcode, robotId } = req.body || {};
+    const { robotId, bufferId, machineId } = req.body || {};
 
-    if (!productBarcode) {
-      return res.status(400).json({ error: "Missing productBarcode" });
+    if (!bufferId) {
+      return res.status(400).json({ error: "Missing bufferId" });
     }
 
-    if (!pickupLocationBarcode) {
-      return res.status(400).json({ error: "Missing pickupLocationBarcode" });
+    if (!machineId) {
+      return res.status(400).json({ error: "Missing machineId" });
     }
 
     const config = await getConfig();
-
-    const product = (config.products || []).find(
-      (item) =>
-        String(item.barcode_text || "").trim() ===
-        String(productBarcode || "").trim()
-    );
-
-    if (!product) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-
-    const pickup = findPickupLocationByBarcode(config, pickupLocationBarcode);
-    if (!pickup) {
-      return res.status(404).json({ error: "Pickup location not found" });
-    }
 
     const robot = findRobot(config, robotId);
     if (!robot) {
       return res.status(404).json({ error: "Robot not found" });
     }
 
-    const drop = findAvailableBuffer(config);
+    const pickup = findBufferById(config, bufferId);
+    if (!pickup) {
+      return res.status(404).json({ error: "Buffer not found" });
+    }
+
+    const drop = findMachineById(config, machineId);
+    if (!drop) {
+      return res.status(404).json({ error: "Machine not found" });
+    }
+
+    if (!pickup.rcsPosition || !drop.rcsPosition) {
+      return res.status(400).json({
+        error: "Pickup or drop rcsPosition is missing",
+      });
+    }
+
     const orderId = `${Date.now()}${Math.floor(Math.random() * 1e6)}`;
 
     const baseOrder = {
       orderId,
       robotId: robot.id,
       robotName: robot.name,
-      productId: product.id,
-      productBarcode: product.barcode_text,
       pickup: {
         id: pickup.id,
         name: pickup.name,
         rcsPosition: pickup.rcsPosition,
-        barcode_text: pickup.barcode_text,
       },
-      drop: drop
-        ? {
-            id: drop.id,
-            name: drop.name,
-            rcsPosition: drop.rcsPosition,
-            statusCart: drop.statusCart,
-            statusWork: drop.statusWork,
-          }
-        : null,
+      drop: {
+        id: drop.id,
+        name: drop.name,
+        rcsPosition: drop.rcsPosition,
+      },
       createdAt: new Date().toISOString(),
     };
-
-    if (!drop) {
-      const waitingOrder = {
-        ...baseOrder,
-        status: "WAITING_BUFFER",
-        note: "All buffers bu1-01 to bu1-05 are full or not free",
-      };
-
-      await addHistory(waitingOrder);
-
-      return res.json({
-        ok: true,
-        orderId,
-        status: "WAITING_BUFFER",
-        message: "Order created and waiting for available buffer",
-        data: waitingOrder,
-        queue: getQueueSnapshot(),
-      });
-    }
 
     const rcsBaseUrl = findRcsBaseUrl(config, robot);
     const taskPath = `${pickup.rcsPosition},${drop.rcsPosition}`;
 
     console.log(
-      `[Orders] dispatch robot=${robot.id} orderId=${orderId} taskPath=${taskPath} deviceNum=${robot.deviceNum} rcsBaseUrl=${rcsBaseUrl || "(empty)"}`
+      `[Orders] dispatch robot=${robot.id} orderId=${orderId} taskPath=${taskPath} deviceNum=${robot.deviceNum} rcsBaseUrl=${rcsBaseUrl || "(empty)"}`,
     );
 
     const result = await dispatchOrderImmediate(baseOrder, {
@@ -261,13 +259,9 @@ router.post("/", async (req, res) => {
       });
     }
 
-    updateBufferStatus(config, drop.id, {
-      statusCart: "full",
-      statusWork: "delivering",
+    updateBufferStatus(config, pickup.id, {
       robotId: robot.id,
       orderId,
-      productId: product.id,
-      productBarcode: product.barcode_text,
     });
 
     await saveConfig(config);
