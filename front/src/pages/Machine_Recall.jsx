@@ -35,14 +35,9 @@ function Machine_Recall() {
 
   // filter buffers
   const availableBuffers = useMemo(() => {
-    return buffers.filter((item) => {
-      const allowIds = ["bu1-01", "bu1-02", "bu1-03", "bu1-04", "bu1-05"];
+    const allowIds = ["bu1-01", "bu1-02", "bu1-03", "bu1-04", "bu1-05"];
 
-      return (
-        allowIds.includes(item.id) &&
-        String(item.statusCart).toLowerCase() === "empty"
-      );
-    });
+    return buffers.filter((item) => allowIds.includes(item.id));
   }, [buffers]);
 
   const selectedBuffer = useMemo(() => {

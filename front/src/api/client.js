@@ -29,6 +29,7 @@ async function apiRequest(path, options = {}) {
   }
   return data;
 }
+
 export function login(username, password) {
   return apiRequest("/auth/login", {
     method: "POST",
