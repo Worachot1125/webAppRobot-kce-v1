@@ -3,7 +3,16 @@ import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HomeIcon from "@mui/icons-material/Home";
 
-function ScreenLayout({ title, onBack, onHome, children, showBack = true }) {
+import logoKCE from "../../public/assets/logo-kce.jpg";
+
+function ScreenLayout({
+  title,
+  onBack,
+  onHome,
+  children,
+  showBack = true,
+  showLogo = true,
+}) {
   return (
     <Box
       sx={{
@@ -14,38 +23,44 @@ function ScreenLayout({ title, onBack, onHome, children, showBack = true }) {
         alignItems: "center",
         px: 2,
         pt: 3,
-        pb: 6
+        pb: 6,
       }}
     >
       <Box
         sx={{
           width: "100%",
-          maxWidth: 420,
+          maxWidth: 650,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
         }}
       >
-        <IconButton onClick={onBack} disabled={!showBack} sx={{ opacity: showBack ? 1 : 0 }}>
-          <ArrowBackIcon />
-        </IconButton>
-        <Box
-          sx={{
-            px: 2.5,
-            py: 0.5,
-            bgcolor: "#111",
-            color: "#fff",
-            borderRadius: 999,
-            minWidth: 140,
-            textAlign: "center"
-          }}
+        <IconButton
+          onClick={onBack}
+          disabled={!showBack}
+          sx={{ opacity: showBack ? 1 : 0 }}
         >
-          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-            {title}
-          </Typography>
-        </Box>
+          <ArrowBackIcon sx={{ fontSize: 50 }} />
+        </IconButton>
+
+        {showLogo ? (
+          <Box
+            component="img"
+            src={logoKCE}
+            alt="Logo"
+            sx={{
+              width: "80px",
+              height: "auto",
+              display: "block",
+              mx: "auto",
+            }}
+          />
+        ) : (
+          <Box sx={{ width: "80px" }} />
+        )}
+
         <IconButton onClick={onHome}>
-          <HomeIcon />
+          <HomeIcon sx={{ fontSize: 50 }} />
         </IconButton>
       </Box>
 
@@ -53,11 +68,11 @@ function ScreenLayout({ title, onBack, onHome, children, showBack = true }) {
         sx={{
           mt: 2,
           width: "100%",
-          maxWidth: 420,
+          maxWidth: 650,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 2
+          gap: 2,
         }}
       >
         {children}

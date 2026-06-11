@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -37,42 +37,42 @@ function Home() {
   };
 
   return (
-    <ScreenLayout title="หน้าหลัก" onBack={() => {}} showBack={false} onHome={() => navigate("/")}>
+    <ScreenLayout
+      title="หน้าหลัก"
+      onBack={() => {}}
+      showBack={false}
+      onHome={() => navigate("/")}
+      showLogo={false}
+      contentMaxWidth={900}
+    >
       <Logo />
-      <Box sx={{ display: "flex", gap: 5, width: "100%", justifyContent: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: { xs: 1, md: 3 },
+          width: "100%",
+          justifyContent: "center",
+          flexDirection: { xs: "column", sm: "row" },
+        }}
+      >
         <Button
           variant="contained"
-          color="primary"
-          sx={{ flex: 1, borderRadius: "4px", py: 3.0 }}
-          onClick={() => navigate("/order/robot")}
+          sx={{
+            flex: 1,
+            borderRadius: "4px",
+            py: { xs: 2, md: 4 },
+            fontSize: { xs: 22, md: 34 },
+            bgcolor: "#eb521d",
+            fontWeight: 900,
+            height: 120,
+          }}
+          onClick={() => navigate("/machine-select")}
         >
-        เครื่อง
+          MACHINE
         </Button>
-        <Button
-          variant="contained"
-          color="inherit"
-          sx={{ flex: 1, borderRadius: "4px", py: 3.0, bgcolor: "#c8c8c8" }}
-          onClick={() => navigate("/cancel")}
-        >
-          stucker
-        </Button>
+
+       
       </Box>
-      {/* <Button
-        variant="contained"
-        color="primary"
-        sx={{ borderRadius: 999, width: "100%", py: 1.4 }}
-        onClick={() => navigate("/history")}
-      >
-        ประวัติการสั่งงาน
-      </Button>
-      <Button
-        variant="outlined"
-        color="primary"
-        sx={{ borderRadius: 999, width: "100%", py: 1.4 }}
-        onClick={() => navigate("/status")}
-      >
-        สถานะหุ่นยนต์
-      </Button> */}
     </ScreenLayout>
   );
 }
