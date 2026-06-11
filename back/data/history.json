@@ -1,5 +1,415 @@
 [
   {
+    "orderId": "1781091050447811881",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01"
+    },
+    "drop": {
+      "id": "mc-01",
+      "name": "Machine-01",
+      "rcsPosition": "Machine-01"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-10T11:30:50.448Z",
+    "startedAt": "2026-06-10T11:30:50.448Z",
+    "finishedAt": "2026-06-10T11:31:11.518Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "1781003113146348111",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T11:05:13.146Z",
+    "startedAt": "2026-06-09T11:05:13.146Z",
+    "finishedAt": "2026-06-09T11:05:34.203Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "1781002011257906818",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T10:46:51.258Z",
+    "startedAt": "2026-06-09T10:46:51.258Z",
+    "finishedAt": "2026-06-09T10:47:12.304Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "178099947915436934",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T10:04:39.155Z",
+    "startedAt": "2026-06-09T10:04:39.155Z",
+    "finishedAt": "2026-06-09T10:05:00.218Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "1780999420376571614",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "bu1-03",
+      "name": "Buffer1-03",
+      "rcsPosition": "Buffer1-03",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T10:03:40.377Z",
+    "startedAt": "2026-06-09T10:03:40.377Z",
+    "finishedAt": "2026-06-09T10:04:01.401Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "178099933410981732",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T10:02:14.111Z",
+    "startedAt": "2026-06-09T10:02:14.111Z",
+    "finishedAt": "2026-06-09T10:02:35.164Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "1780997030583445978",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SEND_FAILED",
+    "createdAt": "2026-06-09T09:23:50.584Z",
+    "startedAt": "2026-06-09T09:23:50.584Z",
+    "finishedAt": "2026-06-09T09:24:11.631Z",
+    "error": "connect ETIMEDOUT 192.168.1.200:7000"
+  },
+  {
+    "orderId": "1780996678942639702",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:17:58.943Z",
+    "startedAt": "2026-06-09T09:17:58.943Z"
+  },
+  {
+    "orderId": "1780996678355789165",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:17:58.356Z",
+    "startedAt": "2026-06-09T09:17:58.356Z"
+  },
+  {
+    "orderId": "178099659131687442",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:16:31.318Z",
+    "startedAt": "2026-06-09T09:16:31.318Z"
+  },
+  {
+    "orderId": "1780996590760213305",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:16:30.761Z",
+    "startedAt": "2026-06-09T09:16:30.761Z"
+  },
+  {
+    "orderId": "1780996001452648826",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:06:41.454Z",
+    "startedAt": "2026-06-09T09:06:41.454Z"
+  },
+  {
+    "orderId": "1780996000865142525",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:06:40.866Z",
+    "startedAt": "2026-06-09T09:06:40.866Z"
+  },
+  {
+    "orderId": "1780995958434271314",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:05:58.436Z",
+    "startedAt": "2026-06-09T09:05:58.436Z"
+  },
+  {
+    "orderId": "1780995957831742412",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:05:57.832Z",
+    "startedAt": "2026-06-09T09:05:57.832Z"
+  },
+  {
+    "orderId": "1780995937130149508",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:05:37.131Z",
+    "startedAt": "2026-06-09T09:05:37.131Z"
+  },
+  {
+    "orderId": "1780995936541621189",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T09:05:36.543Z",
+    "startedAt": "2026-06-09T09:05:36.543Z"
+  },
+  {
+    "orderId": "1780986958037103218",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T06:35:58.040Z",
+    "startedAt": "2026-06-09T06:35:58.040Z"
+  },
+  {
+    "orderId": "1780986957391625000",
+    "robotId": "c040",
+    "robotName": "C040",
+    "pickup": {
+      "id": "l1",
+      "name": "Location1",
+      "rcsPosition": "Location1",
+      "barcode_text": "1111111111"
+    },
+    "drop": {
+      "id": "d-bu1-01",
+      "name": "Buffer1-01",
+      "rcsPosition": "Buffer1-01",
+      "statusCart": "empty",
+      "statusWork": "free"
+    },
+    "status": "SENDING",
+    "createdAt": "2026-06-09T06:35:57.393Z",
+    "startedAt": "2026-06-09T06:35:57.393Z"
+  },
+  {
     "orderId": "1780975938693171154",
     "robotId": "c040",
     "robotName": "C040",
