@@ -13,15 +13,17 @@ import History from "./pages/History.jsx";
 import Cancel from "./pages/Cancel.jsx";
 import Status from "./pages/Status.jsx";
 import ScanLocation from "./pages/ScanLocation.jsx";
+import MachineSelect from "./pages/MachineSelect.jsx";
+import MachineSelectDrop_Back from "./pages/MachineSelectDrop_Back.jsx";
+import Machine_BufferDrop from "./pages/Machine_BufferDrop.jsx";
+import Machine_Recall from "./pages/Machine_Recall.jsx";
+
 
 function isAuthed() {
   return Boolean(localStorage.getItem("authUser"));
 }
 
 function RequireAuth({ children }) {
-  if (!isAuthed()) {
-    return <Navigate to="/login" replace />;
-  }
   return children;
 }
 
@@ -108,6 +110,42 @@ function App() {
           element={
             <RequireAuth>
               <ScanLocation />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/machine-select"
+          element={
+            <RequireAuth>
+              <MachineSelect />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/machine-select-drop-or-takeback"
+          element={
+            <RequireAuth>
+              <MachineSelectDrop_Back />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/machine-buffer-drop"
+          element={
+            <RequireAuth>
+              <Machine_BufferDrop />
+            </RequireAuth>
+          }
+        />
+
+         <Route
+          path="/machine-recall"
+          element={
+            <RequireAuth>
+              <Machine_Recall />
             </RequireAuth>
           }
         />
