@@ -287,6 +287,112 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/recall", async (req, res) => {
+  try {
+    const { robotId, bufferId, machineId } = req.body || {};
+
+    if (!bufferId) {
+      return res.status(400).json({ error: "Missing bufferId" });
+    }
+
+    if (!machineId) {
+      return res.status(400).json({ error: "Missing machineId" });
+    }
+
+    const config = await getConfig();
+
+    const robot = findRobot(config, robotId);
+    if (!robot) {
+      return res.status(404).json({ error: "Robot not found" });
+    }
+
+    const pickup = findBufferById(config, bufferId);
+    if (!pickup) {
+      return res.status(404).json({ error: "Buffer not found" });
+    }
+
+    const drop = findMachineById(config, machineId);
+    if (!drop) {
+      return res.status(404).json({ error: "Machine not found" });
+    }
+
+    if (!pickup.rcsPosition || !drop.rcsPosition) {
+      return res.status(400).json({
+        error: "Pickup or drop rcsPosition is missing",
+      });
+    }
+
+    const orderId = `${Date.now()}${Math.floor(Math.random() * 1e6)}`;
+
+    const baseOrder = {
+      orderId,
+      robotId: robot.id,
+      robotName: robot.name,
+      pickup: {
+        id: drop.id,
+        name: drop.name,
+        rcsPosition: drop.rcsPosition,
+      },
+      drop: {
+        id: pickup.id,
+        name: pickup.name,
+        rcsPosition: pickup.rcsPosition,
+      },
+      type: "RECALL",
+      createdAt: new Date().toISOString(),
+    };
+
+    const rcsBaseUrl = findRcsBaseUrl(config, robot);
+    const taskPath = `${drop.rcsPosition},${pickup.rcsPosition}`;
+
+    console.log(
+      `[Orders Recall] dispatch robot=${robot.id} orderId=${orderId} taskPath=${taskPath} deviceNum=${robot.deviceNum} rcsBaseUrl=${rcsBaseUrl || "(empty)"}`,
+    );
+
+    const result = await dispatchOrderImmediate(baseOrder, {
+      robot,
+      startSpot: drop,
+      endSpot: pickup,
+      rcsBaseUrl,
+    });
+
+    if (!result.ok) {
+      return res.status(502).json({
+        error: result.error || result.rcsResponse?.desc || "RCS recall failed",
+        orderId,
+        status: "SEND_FAILED",
+        rcsResponse: result.rcsResponse,
+      });
+    }
+
+    updateBufferStatus(config, pickup.id, {
+      robotId: robot.id,
+      orderId,
+    });
+
+    await saveConfig(config);
+
+    return res.json({
+      ok: true,
+      orderId,
+      status: "SEND_SUCCESS",
+      rcsResponse: result.rcsResponse,
+      data: {
+        ...baseOrder,
+        status: "SEND_SUCCESS",
+        rcsResponse: result.rcsResponse,
+      },
+      queue: getQueueSnapshot(),
+    });
+  } catch (err) {
+    console.error("[Orders Recall] create error:", err);
+
+    return res.status(500).json({
+      error: err.message || "Create recall order failed",
+    });
+  }
+});
+
 router.get("/history", async (req, res) => {
   const { status, q } = req.query;
   let history = await getHistory();
