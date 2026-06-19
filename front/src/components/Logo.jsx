@@ -1,24 +1,24 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import logoPro from "../../public/assets/logo 100Pro.png"
+import logoKCE from "../../public/assets/logo-kce.jpg";
 
 function Logo() {
   return (
     <Box sx={{ textAlign: "center", my: 1 }}>
-      <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 1 }}>
-        100 Pro
-      </Typography>
       <Box
-                component="img"
-                src={logoPro}
-                alt="CALL AMR"
-                sx={{
-                  width: "150px",
-                  height: "100px",
-                  objectFit: "contain",
-                }}
-              />
+        component="img"
+        src={logoKCE}
+        alt="Logo"
+        sx={{
+          width: "150px",
+          height: "100px",
+          objectFit: "contain",
+        }}
+      />
+      <Typography variant="h6" sx={{ fontWeight: 900, letterSpacing: 1, color: "#eb521d", fontSize: { xs: 18, md: 32 }}}>
+        KCE Electronics PCL
+      </Typography>
     </Box>
   );
 }

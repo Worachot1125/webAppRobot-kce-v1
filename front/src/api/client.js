@@ -1,8 +1,12 @@
 // ใช้ host เดียวกับหน้าที่เปิดอยู่ — เปิดจาก 192.168.1.10 จะยิง API ไป 192.168.1.10:4000 (ไม่ติด localhost)
 const getApiBase = () => {
-  if (typeof window === "undefined") return import.meta.env.VITE_API_BASE_URL || "http://192.168.1.80:4000/api";
+  if (typeof window === "undefined") return import.meta.env.VITE_API_BASE_URL;
   const envUrl = import.meta.env.VITE_API_BASE_URL;
-  if (envUrl && envUrl.includes("localhost") && window.location.hostname !== "localhost") {
+  if (
+    envUrl &&
+    envUrl.includes("localhost") &&
+    window.location.hostname !== "localhost"
+  ) {
     return `${window.location.protocol}//${window.location.hostname}:4000/api`;
   }
   if (envUrl) return envUrl;
@@ -14,9 +18,9 @@ async function apiRequest(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: {
       "Content-Type": "application/json",
-      ...(options.headers || {})
+      ...(options.headers || {}),
     },
-    ...options
+    ...options,
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
@@ -29,7 +33,7 @@ async function apiRequest(path, options = {}) {
 export function login(username, password) {
   return apiRequest("/auth/login", {
     method: "POST",
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ username, password }),
   });
 }
 
@@ -40,17 +44,53 @@ export function fetchConfig() {
 export function updateConfig(config) {
   return apiRequest("/config", {
     method: "PUT",
-    body: JSON.stringify(config)
+    body: JSON.stringify(config),
   });
 }
 
-export function createOrder(payload) {
+export async function scanPickupLocation(barcode) {
+  return apiRequest("/orders/scan-pickup-location", {
+    method: "POST",
+    body: JSON.stringify({ barcode }),
+  });
+}
+
+export async function scanBarcode(barcodeText) {
+  return apiRequest("/orders/scan-barcode", {
+    method: "POST",
+    body: JSON.stringify({
+      barcode_text: barcodeText,
+    }),
+  });
+}
+
+export function fetchMachine(params = {}) {
+  return apiRequest("/robots/get/machines")
+}
+
+export function fetchBuffer(params = {}) {
+  return apiRequest("/locations/get/buffers")
+}
+
+export async function createOrder(payload) {
   return apiRequest("/orders", {
     method: "POST",
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
 }
 
+export async function fetchMachineDropOptions() {
+  return apiRequest("/orders/machine-drop/options");
+}
+
+export async function createMachineDropOrder(payload) {
+  return apiRequest("/orders/machine-drop", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+// ---------------ของเก่า ----------------------------
 export function fetchHistory(params = {}) {
   const search = new URLSearchParams(params);
   const suffix = search.toString() ? `?${search}` : "";
@@ -64,7 +104,6 @@ export function cancelOrder(orderId) {
 export function fetchRobotStatus(robotId) {
   return apiRequest(`/status/${robotId}`);
 }
-
 
 /** Origin ของ backend (ไม่มี /api) — สำหรับ POST /door/... และ GET /door/... */
 function backendOrigin() {
@@ -82,13 +121,12 @@ const rcsDoorPayload = (doorCode, status) =>
     qrName: "test",
     orderId: 0,
     deviceCode: "TEST",
-    status
+    status,
   });
-
 
 export function clearAllTestOutputs() {
   return apiRequest("/test/clear-all-outputs", {
     method: "POST",
-    body: "{}"
+    body: "{}",
   });
 }
